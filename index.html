@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casttêdo Valley</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'AgathoRegularCAPS';
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant', serif;
+            background-color: #010101;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.8);
+            animation: subtle-zoom 20s infinite alternate;
+        }
+
+        @keyframes subtle-zoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            width: 90%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -50px; /* Valor negativo para mover para cima */
+        }
+
+        .logo {
+            margin-bottom: 40px;
+            margin-top: -50px; /* Valor negativo para mover para cima */
+            width: 270px;
+            height: auto;
+            opacity: 0;
+            animation: fade-in 1.5s ease forwards 0.2s;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+        }
+
+        .hero-title {
+            font-family: 'Cormorant', serif;
+            font-size: 3.8rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin: 0 0 5px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            color: white;
+            opacity: 0;
+            animation: fade-in 1.5s ease forwards 0.5s;
+            width: 100%;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            margin: 5px 0 30px 0;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            color: #c0a080;
+            opacity: 0;
+            animation: fade-in 1.5s ease forwards 1s;
+            width: 100%;
+        }
+
+        .hero-tagline {
+            font-family: 'Cormorant', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.6;
+            margin: 0 auto;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            color: white;
+            opacity: 0;
+            animation: fade-in 1.5s ease forwards 1.5s;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .progress-container {
+            position: relative;
+            height: 1px;
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 40px 0;
+            opacity: 0;
+            animation: fade-in 1.5s ease forwards 2s;
+        }
+
+        .progress-bar {
+            position: absolute;
+            height: 100%;
+            width: 0;
+            background-color: #c0a080;
+            animation: progress 3s ease-in-out infinite;
+        }
+
+        @keyframes progress {
+            0% {
+                width: 0%;
+            }
+            50% {
+                width: 100%;
+            }
+            100% {
+                width: 0%;
+            }
+        }
+
+        .coming-soon {
+            display: flex;
+            align-items: center;
+            font-family: 'Cormorant', serif;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            color: rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            animation: fade-in 1.5s ease forwards 2.5s;
+        }
+
+        .coming-line {
+            font-family: 'Cormorant', serif;
+            height: 1px;
+            width: 50px;
+            background-color: #c0a080;
+            margin: 0 15px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Cormorant', serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fade-in 1.5s ease forwards 3s;
+            z-index: 4;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+                letter-spacing: 5px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+                letter-spacing: 3px;
+            }
+            
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+            
+            .logo {
+                width: 180px;
+            }
+            
+            .progress-container {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="hero">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <div class="logo">
+                    <img src="./cv-logo-castanho.png" alt="Casttêdo Valley Logo">
+                </div>
+                <h1 class="hero-title">CASTTÊDO VALLEY</h1>
+                <h2 class="hero-subtitle">EM DESENVOLVIMENTO</h2>
+                <p class="hero-tagline">Tal como os nossos vinhos, também o nosso espaço evolui com o tempo.</p>
+                <p class="hero-tagline">A alma do Douro permanece.</p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+                
+                <div class="coming-soon">
+                    <div class="coming-line"></div>
+                    <span>EM BREVE</span>
+                    <div class="coming-line"></div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            &copy; 2025 CASTTÊDO VALLEY • TODOS OS DIREITOS RESERVADOS
+        </footer>
+    </main>
+</body>
+</html>
